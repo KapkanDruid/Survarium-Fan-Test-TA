@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Architecture.CustomEventBus;
-using Assets.Scripts.Architecture.CustomEventBus.Signals.InitializeSignals;
 using Assets.Scripts.Architecture.Input;
 using Assets.Scripts.Content;
 using System.Collections.Generic;
@@ -13,8 +12,9 @@ namespace Assets.Scripts.Architecture.Bootstrap
     {
         [Inject] private InputEventHandler _inputEventHandler;
         [Inject] private PlayerController.Factory _playerFactory;
-        private PlayerController _playerController;
         [Inject] private EventBus _eventBus;
+
+        private PlayerController _playerController;
 
         private List<object> _dependencies = new();
 
