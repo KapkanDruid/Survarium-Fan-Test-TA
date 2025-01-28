@@ -11,7 +11,6 @@ namespace Assets.Scripts.Content.PlayerLogic
         private CharacterController _characterController;
         private PLayerHorizontalMoveHandler _playerHorizontalMoveHandler;
 
-
         private float _verticalVelocity;
         private float _gravityForce;
         private float _jumpVelocity;

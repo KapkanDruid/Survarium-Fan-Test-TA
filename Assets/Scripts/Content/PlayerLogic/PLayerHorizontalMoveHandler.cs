@@ -26,13 +26,6 @@ namespace Assets.Scripts.Content.PlayerLogic
             _playerTransform = _playerData.PlayerTransform;
 
             _eventBus.Subscribe<InputMoveVectorSignal>(ChangeInputVector);
-
-            var cancelationToken = _playerData.CharacterObject.GetCancellationTokenOnDestroy();
-        }
-
-        public void SetYVelocity(float value)
-        {
-            _yVelocity = value;
         }
 
         public void Tick()
@@ -50,6 +43,11 @@ namespace Assets.Scripts.Content.PlayerLogic
             _movementVector.y = _yVelocity;
 
             _characterController.Move(_movementVector * Time.deltaTime);
+        }
+
+        public void SetYVelocity(float value)
+        {
+            _yVelocity = value;
         }
 
         private void ChangeInputVector(InputMoveVectorSignal signal)
