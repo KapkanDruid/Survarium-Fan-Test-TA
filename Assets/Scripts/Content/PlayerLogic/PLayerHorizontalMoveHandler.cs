@@ -6,6 +6,7 @@ using Zenject;
 namespace Assets.Scripts.Content.PlayerLogic
 {
     public class PLayerHorizontalMoveHandler : ITickable, System.IDisposable
+    public class PlayerHorizontalMoveHandler : ITickable, System.IDisposable
     {
         private EventBus _eventBus;
         private PlayerData _playerData;
@@ -17,7 +18,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private Vector3 _inputVector;
         private float _yVelocity;
 
-        public PLayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
+        public PlayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
         {
             _playerData = playerData;
             _eventBus = eventBus;

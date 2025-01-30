@@ -8,7 +8,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<PlayerController>().AsSingle();
-            Container.BindInterfacesAndSelfTo<PLayerHorizontalMoveHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerHorizontalMoveHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerVerticalMoveHandler>().AsSingle();
             Container.Bind<PlayerData>().FromComponentOnRoot();
             Container.Bind<CharacterController>().FromComponentOnRoot();

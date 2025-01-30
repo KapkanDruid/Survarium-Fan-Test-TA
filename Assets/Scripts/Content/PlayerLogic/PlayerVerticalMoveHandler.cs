@@ -9,7 +9,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private EventBus _eventBus;
         private PlayerData _playerData;
         private CharacterController _characterController;
-        private PLayerHorizontalMoveHandler _playerHorizontalMoveHandler;
+        private PlayerHorizontalMoveHandler _playerHorizontalMoveHandler;
 
         private float _verticalVelocity;
         private float _gravityForce;
@@ -18,7 +18,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         public PlayerVerticalMoveHandler(EventBus eventBus, 
             PlayerData playerData, 
             CharacterController characterController, 
-            PLayerHorizontalMoveHandler pLayerHorizontalMoveHandler)
+            PlayerHorizontalMoveHandler pLayerHorizontalMoveHandler)
         {
             _eventBus = eventBus;
             _playerData = playerData;
