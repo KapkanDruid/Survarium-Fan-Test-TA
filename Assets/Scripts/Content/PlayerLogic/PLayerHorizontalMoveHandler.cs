@@ -16,6 +16,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private Vector3 _lateMoveVector;
         private Vector3 _inputMoveVector;
         private Vector3 _additionalVelocity;
+        private bool _isRunning;
 
         public PlayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
         {
@@ -26,6 +27,7 @@ namespace Assets.Scripts.Content.PlayerLogic
             _playerTransform = _playerData.PlayerTransform;
 
             _eventBus.Subscribe<InputMoveVectorSignal>(ChangeInputMoveVector);
+            _eventBus.Subscribe<InputRunSignal>(OnInputRunActivate);
         }
 
         public void Tick()
@@ -48,7 +50,11 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         private void DetermineGroundMovement()
         {
-            var movementSpeed = _playerData.MoveSpeedOnGround;
+            float movementSpeed;
+            if (_isRunning)
+                movementSpeed = _playerData.RunSpeed;
+            else
+                movementSpeed = _playerData.MoveSpeedOnGround;
 
             _movementVector = _playerTransform.right * _inputMoveVector.x + _playerTransform.forward * _inputMoveVector.y;
 
@@ -79,9 +85,18 @@ namespace Assets.Scripts.Content.PlayerLogic
             _inputMoveVector = signal.InputVector;
         }
 
+        private void OnInputRunActivate(InputRunSignal signal)
+        {
+            if (!_isRunning)
+                _isRunning = true;
+            else
+                _isRunning = false;
+        }
+
         public void Dispose()
         {
             _eventBus.Unsubscribe<InputMoveVectorSignal>(ChangeInputMoveVector);
+            _eventBus.Unsubscribe<InputRunSignal>(OnInputRunActivate);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         public float SlideAngle => _playerConfig.SlideAngle;
         public float SlideSpeed => _playerConfig.SlideSpeed;
         public float SlideSpeedMultiplier => _playerConfig.SlideSpeedMultiplierByAngle;
+        public float RunSpeed => _playerConfig.RunSpeed;
 
         public Transform PlayerTransform => _playerTransform;
         public GameObject CharacterObject => _characterObject;

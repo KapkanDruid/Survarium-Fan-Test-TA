@@ -7,6 +7,7 @@ namespace Assets.Scripts.Content.PlayerLogic
     {
         [SerializeField] private float _moveSpeedOnGround;
         [SerializeField] private float _moveSpeedOnFall;
+        [SerializeField] private float _runSpeed;
         [SerializeField] private float _jumpTime;
         [SerializeField] private float _jumpHeight;
         [SerializeField] private float _slideAngle;
@@ -20,5 +21,6 @@ namespace Assets.Scripts.Content.PlayerLogic
         public float SlideAngle => _slideAngle;
         public float SlideSpeed => _slideSpeed;
         public float SlideSpeedMultiplierByAngle => _slideSpeedMultiplierByAngle;
+        public float RunSpeed => _runSpeed;
     }
 }
