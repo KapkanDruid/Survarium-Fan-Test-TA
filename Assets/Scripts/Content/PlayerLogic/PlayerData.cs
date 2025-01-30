@@ -1,26 +1,23 @@
-﻿using Assets.Scripts.Simples;
-using System;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
     public class PlayerData : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotateSpeed;
+        [SerializeField] private float _moveSpeedOnGround;
+        [SerializeField] private float _moveSpeedOnFall;
         [SerializeField] private float _jumpTime;
         [SerializeField] private float _jumpHeight;
-        [SerializeField] private float _jumpMoveSpeed;
 
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private GameObject _characterObject;
         [SerializeField] private CinemachinePanTilt _cinemachinePanTilt;
 
-        public float MoveSpeed => _moveSpeed;
-        public float RotateSpeed => _rotateSpeed;
+        public float MoveSpeedOnGround => _moveSpeedOnGround;
         public float JumpTime => _jumpTime;
         public float JumpHeight => _jumpHeight;
-        public float JumpMoveSpeed => _jumpMoveSpeed;
+        public float MoveSpeedOnFall => _moveSpeedOnFall;
 
         public Transform PlayerTransform => _playerTransform;
         public GameObject CharacterObject => _characterObject;

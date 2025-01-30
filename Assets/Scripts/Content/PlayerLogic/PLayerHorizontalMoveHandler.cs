@@ -1,11 +1,9 @@
 ﻿using Assets.Scripts.Architecture.CustomEventBus;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PLayerHorizontalMoveHandler : ITickable, System.IDisposable
     public class PlayerHorizontalMoveHandler : ITickable, System.IDisposable
     {
         private EventBus _eventBus;
@@ -16,6 +14,7 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         private Vector3 _movementVector;
         private Vector3 _lateMoveVector;
+        private Vector3 _inputMoveVector;
         private float _yVelocity;
 
         public PlayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
@@ -36,14 +35,39 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         private void Move()
         {
-            var movementSpeed = _playerData.MoveSpeed;
-
-            _movementVector = _playerTransform.right * _inputVector.x + _playerTransform.forward * _inputVector.y;
-            _movementVector *= movementSpeed;
-
-            _movementVector.y = _yVelocity;
+            if (_characterController.isGrounded)
+                DetermineGroundMovement();
+            else
+                DetermineFallMovement();
 
             _characterController.Move(_movementVector * Time.deltaTime);
+        }
+
+        private void DetermineGroundMovement()
+        {
+            var movementSpeed = _playerData.MoveSpeedOnGround;
+
+            _movementVector = _playerTransform.right * _inputMoveVector.x + _playerTransform.forward * _inputMoveVector.y;
+
+            _movementVector *= movementSpeed;
+
+            _lateMoveVector = _movementVector;
+            _lateMoveVector.y = 0;
+
+            _movementVector.y = _yVelocity;
+        }
+
+        private void DetermineFallMovement()
+        {
+            var movementSpeed = _playerData.MoveSpeedOnFall;
+
+            _movementVector = _playerTransform.right * _inputMoveVector.x + _playerTransform.forward * _inputMoveVector.y;
+
+            _movementVector *= movementSpeed;
+
+            _movementVector += _lateMoveVector;
+
+            _movementVector.y = _yVelocity;
         }
 
         public void SetYVelocity(float value)
