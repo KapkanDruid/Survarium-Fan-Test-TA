@@ -1,4 +1,7 @@
 ﻿namespace Assets.Scripts.Architecture.CustomEventBus
 {
-    public class InputJumpSignal { }
+    public class InputJumpSignal 
+    {
+        public InputJumpSignal() { }
+    }
 }
