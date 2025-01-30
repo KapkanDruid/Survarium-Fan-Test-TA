@@ -34,10 +34,18 @@ namespace Assets.Scripts.Content.PlayerLogic
         {
             _playerHorizontalMoveHandler.AddVelocity(new(0, _verticalVelocity, 0));
 
+            CheckCelling();
+
             if (!_characterController.isGrounded)
                 _verticalVelocity -= _gravityForce * Time.deltaTime;
             else
                 _verticalVelocity = -0.001f;
+        }
+
+        private void CheckCelling()
+        {
+            if ((_characterController.collisionFlags & CollisionFlags.Above) != 0)
+                    _verticalVelocity = 0;
         }
 
         private void SetJumpVelocity()
