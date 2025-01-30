@@ -40,6 +40,9 @@ namespace Assets.Scripts.Content.PlayerLogic
             else
                 DetermineFallMovement();
 
+            _movementVector += _additionalVelocity;
+            _additionalVelocity = Vector3.zero;
+
             _characterController.Move(_movementVector * Time.deltaTime);
         }
 
@@ -53,8 +56,6 @@ namespace Assets.Scripts.Content.PlayerLogic
 
             _lateMoveVector = _movementVector;
             _lateMoveVector.y = 0;
-
-            _movementVector += _additionalVelocity;
         }
 
         private void DetermineFallMovement()
@@ -66,13 +67,11 @@ namespace Assets.Scripts.Content.PlayerLogic
             _movementVector *= movementSpeed;
 
             _movementVector += _lateMoveVector;
-
-            _movementVector += _additionalVelocity;
         }
 
         public void AddVelocity(Vector3 vector)
         {
-            _additionalVelocity = vector;
+            _additionalVelocity += vector;
         }
 
         private void ChangeInputMoveVector(InputMoveVectorSignal signal)

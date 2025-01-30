@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d340812f8916e24982758cf1d14b464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundRayLength: 0.5
   _playerConfig: {fileID: 11400000, guid: a85723aa018aa3f4cb8cd832e0b2fbd1, type: 2}
   _playerTransform: {fileID: 3848243934690948484}
   _characterObject: {fileID: 6360763880421612650}
