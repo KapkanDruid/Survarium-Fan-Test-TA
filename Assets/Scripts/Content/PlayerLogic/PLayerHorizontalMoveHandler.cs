@@ -15,7 +15,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private Vector3 _movementVector;
         private Vector3 _lateMoveVector;
         private Vector3 _inputMoveVector;
-        private float _yVelocity;
+        private Vector3 _additionalVelocity;
 
         public PlayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
         {
@@ -54,7 +54,7 @@ namespace Assets.Scripts.Content.PlayerLogic
             _lateMoveVector = _movementVector;
             _lateMoveVector.y = 0;
 
-            _movementVector.y = _yVelocity;
+            _movementVector += _additionalVelocity;
         }
 
         private void DetermineFallMovement()
@@ -67,12 +67,12 @@ namespace Assets.Scripts.Content.PlayerLogic
 
             _movementVector += _lateMoveVector;
 
-            _movementVector.y = _yVelocity;
+            _movementVector += _additionalVelocity;
         }
 
-        public void SetYVelocity(float value)
+        public void AddVelocity(Vector3 vector)
         {
-            _yVelocity = value;
+            _additionalVelocity = vector;
         }
 
         private void ChangeInputMoveVector(InputMoveVectorSignal signal)

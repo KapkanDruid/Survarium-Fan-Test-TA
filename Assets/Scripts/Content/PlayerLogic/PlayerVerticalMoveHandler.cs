@@ -32,7 +32,7 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         public void Tick()
         {
-            _playerHorizontalMoveHandler.SetYVelocity(_verticalVelocity);
+            _playerHorizontalMoveHandler.AddVelocity(new(0, _verticalVelocity, 0));
 
             if (!_characterController.isGrounded)
                 _verticalVelocity -= _gravityForce * Time.deltaTime;
@@ -54,7 +54,7 @@ namespace Assets.Scripts.Content.PlayerLogic
                SetJumpVelocity();
                 _verticalVelocity = _jumpVelocity;
 
-                _playerHorizontalMoveHandler.SetYVelocity(_verticalVelocity);
+                _playerHorizontalMoveHandler.AddVelocity(new(0,_verticalVelocity,0));
             }
         }
 
