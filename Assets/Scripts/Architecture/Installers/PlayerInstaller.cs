@@ -10,6 +10,7 @@ namespace Assets.Scripts.Content.PlayerLogic
             Container.BindInterfacesAndSelfTo<PlayerController>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerHorizontalMoveHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerVerticalMoveHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PLayerRotateHandler>().AsSingle();
             Container.Bind<PlayerData>().FromComponentOnRoot();
             Container.Bind<CharacterController>().FromComponentOnRoot();
         }

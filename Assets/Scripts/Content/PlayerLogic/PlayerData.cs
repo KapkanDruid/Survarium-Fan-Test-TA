@@ -14,6 +14,7 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private GameObject _characterObject;
+        [SerializeField] private CinemachinePanTilt _cinemachinePanTilt;
 
         public float MoveSpeed => _moveSpeed;
         public float RotateSpeed => _rotateSpeed;
@@ -23,5 +24,6 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         public Transform PlayerTransform => _playerTransform;
         public GameObject CharacterObject => _characterObject;
+        public CinemachinePanTilt CinemachinePanTilt => _cinemachinePanTilt;
     }
 }
