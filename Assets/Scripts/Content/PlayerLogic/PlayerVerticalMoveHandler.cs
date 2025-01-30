@@ -15,9 +15,9 @@ namespace Assets.Scripts.Content.PlayerLogic
         private float _gravityForce;
         private float _jumpVelocity;
 
-        public PlayerVerticalMoveHandler(EventBus eventBus, 
-            PlayerData playerData, 
-            CharacterController characterController, 
+        public PlayerVerticalMoveHandler(EventBus eventBus,
+            PlayerData playerData,
+            CharacterController characterController,
             PlayerHorizontalMoveHandler pLayerHorizontalMoveHandler)
         {
             _eventBus = eventBus;
@@ -44,8 +44,8 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         private void CheckCelling()
         {
-            if ((_characterController.collisionFlags & CollisionFlags.Above) != 0)
-                    _verticalVelocity = 0;
+            if ((_characterController.collisionFlags & CollisionFlags.Above) != 0 && _verticalVelocity > 0)
+                _verticalVelocity = 0;
         }
 
         private void SetJumpVelocity()
@@ -59,10 +59,10 @@ namespace Assets.Scripts.Content.PlayerLogic
         {
             if (_characterController.isGrounded)
             {
-               SetJumpVelocity();
+                SetJumpVelocity();
                 _verticalVelocity = _jumpVelocity;
 
-                _playerHorizontalMoveHandler.AddVelocity(new(0,_verticalVelocity,0));
+                _playerHorizontalMoveHandler.AddVelocity(new(0, _verticalVelocity, 0));
             }
         }
 
