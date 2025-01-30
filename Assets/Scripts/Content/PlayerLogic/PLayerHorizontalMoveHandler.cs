@@ -15,7 +15,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private CharacterController _characterController;
 
         private Vector3 _movementVector;
-        private Vector3 _inputVector;
+        private Vector3 _lateMoveVector;
         private float _yVelocity;
 
         public PlayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Content.PlayerLogic
 
             _playerTransform = _playerData.PlayerTransform;
 
-            _eventBus.Subscribe<InputMoveVectorSignal>(ChangeInputVector);
+            _eventBus.Subscribe<InputMoveVectorSignal>(ChangeInputMoveVector);
         }
 
         public void Tick()
@@ -51,14 +51,14 @@ namespace Assets.Scripts.Content.PlayerLogic
             _yVelocity = value;
         }
 
-        private void ChangeInputVector(InputMoveVectorSignal signal)
+        private void ChangeInputMoveVector(InputMoveVectorSignal signal)
         {
-            _inputVector = signal.MoveVector;
+            _inputMoveVector = signal.InputVector;
         }
 
         public void Dispose()
         {
-            _eventBus.Unsubscribe<InputMoveVectorSignal>(ChangeInputVector);
+            _eventBus.Unsubscribe<InputMoveVectorSignal>(ChangeInputMoveVector);
         }
     }
 }
