@@ -2,19 +2,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Architecture.CustomEventBus
 {
-    public class InputMoveVectorSignal
+    public class InputMoveVectorSignal : InputVectorSignal
     {
-        private Vector2 _moveVector;
-        public Vector2 MoveVector => _moveVector;
-
-        public InputMoveVectorSignal(Vector2 moveVector)
-        {
-            _moveVector = moveVector;
-        }
-
-        public void SetValue(Vector2 value)
-        {
-            _moveVector = value;
-        }
+        public InputMoveVectorSignal(Vector2 inputVector) : base(inputVector) { }
     }
 }
