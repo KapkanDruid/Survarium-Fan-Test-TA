@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Content.GizmosDrawing;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerSlideHandler : ITickable
+    public class PlayerSlideHandler : ITickable, IGizmosDrawerOnSelected
     {
         private PlayerData _playerData;
         private Transform _playerTransform;
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private PlayerHorizontalMoveHandler _moveHandler;
 
         private Vector3 _slideVector;
+        private float _rayLength;
 
         public PlayerSlideHandler(PlayerData playerData, CharacterController characterController, PlayerHorizontalMoveHandler moveHandler)
         {
@@ -33,9 +35,9 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         private void DetermineSlideVector()
         {
-            var rayLength = _characterController.height / 2 + _playerData.GroundRayLength;
+            _rayLength = _characterController.height / 2 + _playerData.GroundRayLength;
 
-            if (Physics.Raycast(_playerTransform.position, Vector3.down, out RaycastHit hit, rayLength))
+            if (Physics.Raycast(_playerTransform.position, Vector3.down, out RaycastHit hit, _rayLength))
             {
                 float angle = Vector3.Angle(hit.normal, Vector3.up);
 
@@ -52,6 +54,16 @@ namespace Assets.Scripts.Content.PlayerLogic
                     _slideVector *= modifiedSlideSpeed;
                 }
             }
+        }
+
+        public void OnDrawGizmosSelected()
+        {
+            if (_playerTransform == null)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + Vector3.down * _rayLength);
+            Gizmos.DrawSphere(_playerTransform.position + Vector3.down * _rayLength, 0.03f);
         }
     }
 }

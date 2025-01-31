@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Content.GizmosDrawing;
+using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
@@ -12,8 +13,9 @@ namespace Assets.Scripts.Content.PlayerLogic
             Container.BindInterfacesAndSelfTo<PlayerVerticalMoveHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PLayerRotateHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerSlideHandler>().AsSingle();
-            Container.Bind<PlayerData>().FromComponentOnRoot();
-            Container.Bind<CharacterController>().FromComponentOnRoot();
+            Container.Bind<PlayerData>().FromComponentOnRoot().AsSingle();
+            Container.Bind<CharacterController>().FromComponentOnRoot().AsSingle();
+            Container.Bind<GizmosDrawer>().FromNewComponentOnRoot().AsSingle();
         }
     }
 }

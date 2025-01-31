@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeedOnGround: 10
   _moveSpeedOnFall: 3
+  _runSpeed: 20
   _jumpTime: 0.7
   _jumpHeight: 2.5
   _slideAngle: 30
   _slideSpeed: 4
-  _slideSpeedMultiplierByAngle: 0
+  _slideSpeedMultiplierByAngle: 1

@@ -1,10 +1,11 @@
 ﻿using Assets.Scripts.Architecture.CustomEventBus;
+using Assets.Scripts.Content.GizmosDrawing;
 using UnityEngine;
 using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerHorizontalMoveHandler : ITickable, System.IDisposable
+    public class PlayerHorizontalMoveHandler : ITickable, System.IDisposable, IGizmosDrawer
     {
         private EventBus _eventBus;
         private PlayerData _playerData;
@@ -97,6 +98,16 @@ namespace Assets.Scripts.Content.PlayerLogic
         {
             _eventBus.Unsubscribe<InputMoveVectorSignal>(ChangeInputMoveVector);
             _eventBus.Unsubscribe<InputRunSignal>(OnInputRunActivate);
+        }
+
+        public void OnDrawGizmos()
+        {
+            if (_playerTransform == null)
+                return;
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(_playerTransform.position, _movementVector);
+            Gizmos.DrawSphere(_playerTransform.position + _movementVector, 0.1f);
         }
     }
 }
