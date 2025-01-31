@@ -4,12 +4,12 @@ using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerSlideHandler : ITickable, IGizmosDrawerOnSelected
+    public sealed class PlayerSlideHandler : ITickable, IGizmosDrawerOnSelected
     {
-        private PlayerData _playerData;
-        private Transform _playerTransform;
-        private CharacterController _characterController;
-        private PlayerHorizontalMoveHandler _moveHandler;
+        private readonly PlayerData _playerData;
+        private readonly Transform _playerTransform;
+        private readonly CharacterController _characterController;
+        private readonly PlayerHorizontalMoveHandler _moveHandler;
 
         private Vector3 _slideVector;
         private float _rayLength;

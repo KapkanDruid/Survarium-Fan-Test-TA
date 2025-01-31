@@ -5,14 +5,14 @@ using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerHorizontalMoveHandler : ITickable, System.IDisposable, IGizmosDrawer
+    public sealed class PlayerHorizontalMoveHandler : ITickable, System.IDisposable, IGizmosDrawer
     {
-        private EventBus _eventBus;
-        private PlayerData _playerData;
+        private readonly EventBus _eventBus;
+        private readonly PlayerData _playerData;
 
-        private Transform _playerTransform;
-        private CharacterController _characterController;
-        private PlayerCrouchHandler _playerCrouchHandler;
+        private readonly Transform _playerTransform;
+        private readonly CharacterController _characterController;
+        private readonly PlayerCrouchHandler _playerCrouchHandler;
 
         private Vector3 _movementVector;
         private Vector3 _lateMoveVector;

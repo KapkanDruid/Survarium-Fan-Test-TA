@@ -4,13 +4,13 @@ using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerVerticalMoveHandler : ITickable, System.IDisposable
+    public sealed class PlayerVerticalMoveHandler : ITickable, System.IDisposable
     {
-        private EventBus _eventBus;
-        private PlayerData _playerData;
-        private CharacterController _characterController;
-        private PlayerHorizontalMoveHandler _playerHorizontalMoveHandler;
-        private PlayerCrouchHandler _playerCrouchHandler;
+        private readonly EventBus _eventBus;
+        private readonly PlayerData _playerData;
+        private readonly CharacterController _characterController;
+        private readonly PlayerHorizontalMoveHandler _playerHorizontalMoveHandler;
+        private readonly PlayerCrouchHandler _playerCrouchHandler;
 
         private float _verticalVelocity;
         private float _gravityForce;

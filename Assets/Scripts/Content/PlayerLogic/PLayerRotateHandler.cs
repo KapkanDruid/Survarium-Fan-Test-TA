@@ -4,12 +4,12 @@ using Zenject;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PLayerRotateHandler : ITickable
+    public sealed class PLayerRotateHandler : ITickable
     {
-        private PlayerData _playerData;
+        private readonly PlayerData _playerData;
 
-        private Transform _playerTransform;
-        private CinemachinePanTilt _panTilt;
+        private readonly Transform _playerTransform;
+        private readonly CinemachinePanTilt _panTilt;
 
         public PLayerRotateHandler(PlayerData playerData)
         {

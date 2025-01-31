@@ -4,17 +4,17 @@ using UnityEngine;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerCrouchHandler : System.IDisposable, IGizmosDrawerOnSelected
+    public sealed class PlayerCrouchHandler : System.IDisposable, IGizmosDrawerOnSelected
     {
-        private PlayerData _playerData;
-        private CharacterController _characterController;
-        private Transform _playerTransform;
-        private EventBus _eventBus;
+        private readonly PlayerData _playerData;
+        private readonly CharacterController _characterController;
+        private readonly Transform _playerTransform;
+        private readonly EventBus _eventBus;
 
         private bool _isCrouching;
-        private float _originalHeight;
+        private readonly float _originalHeight;
         private float _crouchHeight;
-        private Vector3 _originalSize;
+        private readonly Vector3 _originalSize;
         private Vector3 _crouchSize;
 
         public bool IsCrouching => _isCrouching;
@@ -60,7 +60,7 @@ namespace Assets.Scripts.Content.PlayerLogic
             if (!_isCrouching)
                 return;
 
-            if (!Physics.Raycast(_playerTransform.position, Vector3.up, out RaycastHit hitInfo, _originalHeight - _crouchHeight))
+            if (!Physics.Raycast(_playerTransform.position, Vector3.up, _originalHeight - _crouchHeight))
             {
                 _isCrouching = false;
                 _characterController.height = _originalHeight;

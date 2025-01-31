@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class PlayerData : MonoBehaviour
+    public sealed class PlayerData : MonoBehaviour
     {
         [SerializeField] private float _groundRayLength;
         [SerializeField] private PlayerConfig _playerConfig;

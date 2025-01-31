@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Content.PlayerLogic
 {
-    public class CameraEffectsHandler : System.IDisposable
+    public sealed class CameraEffectsHandler : System.IDisposable
     {
-        private PlayerHorizontalMoveHandler _moveHandler;
-        private CinemachineCamera _cinemachineCamera;
-        private PlayerData _playerData;
-        private EventBus _eventBus;
+        private readonly PlayerHorizontalMoveHandler _moveHandler;
+        private readonly CinemachineCamera _cinemachineCamera;
+        private readonly PlayerData _playerData;
+        private readonly EventBus _eventBus;
 
-        private CancellationToken _cancellationToken;
+        private readonly CancellationToken _cancellationToken;
 
         private float _defaultFOV;
         private bool _isActive;

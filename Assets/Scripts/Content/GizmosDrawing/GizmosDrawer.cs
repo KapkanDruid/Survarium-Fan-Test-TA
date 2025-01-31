@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Assets.Scripts.Content.GizmosDrawing
 {
-    public class GizmosDrawer : MonoBehaviour
+    public sealed class GizmosDrawer : MonoBehaviour
     {
         private IGizmosDrawer[] _gizmosDrawers;
         private IGizmosDrawerOnSelected[] _gizmosDrawerOnSelected;
