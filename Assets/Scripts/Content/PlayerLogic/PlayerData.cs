@@ -21,6 +21,8 @@ namespace Assets.Scripts.Content.PlayerLogic
         public float SlideSpeed => _playerConfig.SlideSpeed;
         public float SlideSpeedMultiplier => _playerConfig.SlideSpeedMultiplierByAngle;
         public float RunSpeed => _playerConfig.RunSpeed;
+        public float CrouchHeight => _playerConfig.CrouchHeight;
+        public float CrouchSpeed => _playerConfig.CrouchSpeed;
 
         public Transform PlayerTransform => _playerTransform;
         public GameObject CharacterObject => _characterObject;

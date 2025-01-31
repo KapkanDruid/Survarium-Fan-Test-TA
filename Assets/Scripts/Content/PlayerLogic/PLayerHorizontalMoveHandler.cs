@@ -12,6 +12,7 @@ namespace Assets.Scripts.Content.PlayerLogic
 
         private Transform _playerTransform;
         private CharacterController _characterController;
+        private PlayerCrouchHandler _playerCrouchHandler;
 
         private Vector3 _movementVector;
         private Vector3 _lateMoveVector;
@@ -19,11 +20,15 @@ namespace Assets.Scripts.Content.PlayerLogic
         private Vector3 _additionalVelocity;
         private bool _isRunning;
 
-        public PlayerHorizontalMoveHandler(PlayerData playerData, EventBus eventBus, CharacterController characterController)
+        public PlayerHorizontalMoveHandler(PlayerData playerData,
+            EventBus eventBus,
+            CharacterController characterController,
+            PlayerCrouchHandler playerCrouchHandler = null)
         {
             _playerData = playerData;
             _eventBus = eventBus;
             _characterController = characterController;
+            _playerCrouchHandler = playerCrouchHandler;
 
             _playerTransform = _playerData.PlayerTransform;
 
@@ -52,10 +57,19 @@ namespace Assets.Scripts.Content.PlayerLogic
         private void DetermineGroundMovement()
         {
             float movementSpeed;
-            if (_isRunning)
+
+            if (_playerCrouchHandler?.IsCrouching == true)
+            {
+                movementSpeed = _playerCrouchHandler.CrouchSpeed;
+            }
+            else if (_isRunning)
+            {
                 movementSpeed = _playerData.RunSpeed;
+            }
             else
+            {
                 movementSpeed = _playerData.MoveSpeedOnGround;
+            }
 
             _movementVector = _playerTransform.right * _inputMoveVector.x + _playerTransform.forward * _inputMoveVector.y;
 

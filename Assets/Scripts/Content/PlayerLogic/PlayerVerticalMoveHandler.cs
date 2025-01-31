@@ -10,6 +10,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         private PlayerData _playerData;
         private CharacterController _characterController;
         private PlayerHorizontalMoveHandler _playerHorizontalMoveHandler;
+        private PlayerCrouchHandler _playerCrouchHandler;
 
         private float _verticalVelocity;
         private float _gravityForce;
@@ -18,12 +19,14 @@ namespace Assets.Scripts.Content.PlayerLogic
         public PlayerVerticalMoveHandler(EventBus eventBus,
             PlayerData playerData,
             CharacterController characterController,
-            PlayerHorizontalMoveHandler pLayerHorizontalMoveHandler)
+            PlayerHorizontalMoveHandler pLayerHorizontalMoveHandler,
+            PlayerCrouchHandler playerCrouchHandler = null)
         {
             _eventBus = eventBus;
             _playerData = playerData;
             _characterController = characterController;
             _playerHorizontalMoveHandler = pLayerHorizontalMoveHandler;
+            _playerCrouchHandler = playerCrouchHandler;
 
             _eventBus.Subscribe<InputJumpSignal>(OnJumpCalled);
 
@@ -59,6 +62,12 @@ namespace Assets.Scripts.Content.PlayerLogic
         {
             if (_characterController.isGrounded)
             {
+                if (_playerCrouchHandler?.IsCrouching == true)
+                {
+                    _playerCrouchHandler.Stand();
+                    return;
+                }
+
                 SetJumpVelocity();
                 _verticalVelocity = _jumpVelocity;
 

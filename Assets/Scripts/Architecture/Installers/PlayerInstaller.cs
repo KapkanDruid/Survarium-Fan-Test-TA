@@ -13,9 +13,10 @@ namespace Assets.Scripts.Content.PlayerLogic
             Container.BindInterfacesAndSelfTo<PlayerVerticalMoveHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PLayerRotateHandler>().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayerSlideHandler>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayerCrouchHandler>().AsSingle();
             Container.Bind<PlayerData>().FromComponentOnRoot().AsSingle();
             Container.Bind<CharacterController>().FromComponentOnRoot().AsSingle();
-            Container.Bind<GizmosDrawer>().FromNewComponentOnRoot().AsSingle();
+            Container.Bind<GizmosDrawer>().FromComponentOnRoot().AsSingle();
         }
     }
 }

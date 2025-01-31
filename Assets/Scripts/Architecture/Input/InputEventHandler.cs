@@ -33,6 +33,8 @@ namespace Assets.Scripts.Architecture.Input
 
             _inputActions.Player.Sprint.performed += context => ReadRun();
             _inputActions.Player.Sprint.canceled += context => ReadRun();
+
+            _inputActions.Player.Crouch.performed += context => ReadCrouch();
         }
 
         private void ReadMoveVector(InputAction.CallbackContext context)
@@ -55,6 +57,11 @@ namespace Assets.Scripts.Architecture.Input
         private void ReadRun()
         {
             _eventBus.Invoke(new InputRunSignal());
+        }
+
+        private void ReadCrouch()
+        {
+            _eventBus.Invoke(new InputCrouchSignal());
         }
 
         private void ReadLookVector(InputAction.CallbackContext context)
@@ -83,6 +90,8 @@ namespace Assets.Scripts.Architecture.Input
 
             _inputActions.Player.Sprint.performed -= context => ReadRun();
             _inputActions.Player.Sprint.canceled -= context => ReadRun();
+
+            _inputActions.Player.Crouch.performed -= context => ReadCrouch();
         }
     }
 }
