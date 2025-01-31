@@ -15,6 +15,8 @@ namespace Assets.Scripts.Content.PlayerLogic
         [SerializeField] private float _slideAngle;
         [SerializeField] private float _slideSpeed;
         [SerializeField] private float _slideSpeedMultiplierByAngle;
+        [SerializeField, Range(0, 100)] private float _FOVIncreasePercent;
+        [SerializeField] private float _FOVIncreaseDuration;
 
         public float MoveSpeedOnGround => _moveSpeedOnGround;
         public float JumpTime => _jumpTime;
@@ -26,5 +28,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         public float RunSpeed => _runSpeed;
         public float CrouchHeight => _crouchHeight;
         public float CrouchSpeed => _crouchSpeed;
+        public float FOVIncreasePercent => _FOVIncreasePercent;
+        public float FOVIncreaseDuration => _FOVIncreaseDuration;
     }
 }

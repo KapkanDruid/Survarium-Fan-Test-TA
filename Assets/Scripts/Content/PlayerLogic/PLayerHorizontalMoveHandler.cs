@@ -20,6 +20,8 @@ namespace Assets.Scripts.Content.PlayerLogic
         private Vector3 _additionalVelocity;
         private bool _isRunning;
 
+        public Vector3 MovementVector => _movementVector;
+
         public PlayerHorizontalMoveHandler(PlayerData playerData,
             EventBus eventBus,
             CharacterController characterController,

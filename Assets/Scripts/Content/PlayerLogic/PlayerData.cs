@@ -11,6 +11,7 @@ namespace Assets.Scripts.Content.PlayerLogic
         [SerializeField] private Transform _playerTransform;
         [SerializeField] private GameObject _characterObject;
         [SerializeField] private CinemachinePanTilt _cinemachinePanTilt;
+        [SerializeField] private CinemachineCamera _cinemachineCamera;
 
         public float MoveSpeedOnGround => _playerConfig.MoveSpeedOnGround;
         public float JumpTime => _playerConfig.JumpTime;
@@ -23,9 +24,12 @@ namespace Assets.Scripts.Content.PlayerLogic
         public float RunSpeed => _playerConfig.RunSpeed;
         public float CrouchHeight => _playerConfig.CrouchHeight;
         public float CrouchSpeed => _playerConfig.CrouchSpeed;
+        public float FOVIncreasePercent => _playerConfig.FOVIncreasePercent;
+        public float FOVIncreaseDuration => _playerConfig.FOVIncreaseDuration;
 
         public Transform PlayerTransform => _playerTransform;
         public GameObject CharacterObject => _characterObject;
         public CinemachinePanTilt CinemachinePanTilt => _cinemachinePanTilt;
+        public CinemachineCamera CinemachineCamera => _cinemachineCamera;
     }
 }

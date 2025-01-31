@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2536483773808465054}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.050418697, y: 0.89012855, z: -0.4413492, w: 0.1016862}
+  m_LocalRotation: {x: -0.0044132667, y: 0.9925064, z: 0.037713587, w: 0.116143696}
   m_LocalPosition: {x: 0, y: 0.502, z: 0.214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -113,7 +113,7 @@ MonoBehaviour:
   ReferenceFrame: 1
   RecenterTarget: 0
   PanAxis:
-    Value: 166.96584
+    Value: 166.65114
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -123,7 +123,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 52.746853
+    Value: -4.352194
     Center: 0
     Range: {x: -70, y: 70}
     Wrap: 0
@@ -328,6 +328,7 @@ MonoBehaviour:
   _playerTransform: {fileID: 3848243934690948484}
   _characterObject: {fileID: 6360763880421612650}
   _cinemachinePanTilt: {fileID: 1066433346979360713}
+  _cinemachineCamera: {fileID: 5072779837804990356}
 --- !u!114 &8588795277403674739
 MonoBehaviour:
   m_ObjectHideFlags: 0
