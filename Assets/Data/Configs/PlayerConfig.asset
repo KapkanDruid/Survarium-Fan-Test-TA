@@ -15,6 +15,8 @@ MonoBehaviour:
   _moveSpeedOnGround: 10
   _moveSpeedOnFall: 3
   _runSpeed: 20
+  _crouchHeight: 1
+  _crouchSpeed: 4
   _jumpTime: 0.7
   _jumpHeight: 2.5
   _slideAngle: 30
