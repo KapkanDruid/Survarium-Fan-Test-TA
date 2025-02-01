@@ -22,5 +22,5 @@ MonoBehaviour:
   _slideAngle: 30
   _slideSpeed: 4
   _slideSpeedMultiplierByAngle: 1
-  _FOVIncreasePercent: 50.5
-  _FOVIncreaseDuration: 0.7
+  _FOVIncreasePercent: 17.8
+  _FOVIncreaseDuration: 0.6
