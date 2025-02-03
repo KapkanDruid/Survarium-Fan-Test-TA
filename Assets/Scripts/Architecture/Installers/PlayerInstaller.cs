@@ -18,6 +18,9 @@ namespace Assets.Scripts.Content.PlayerLogic
             Container.Bind<PlayerData>().FromComponentOnRoot().AsSingle();
             Container.Bind<CharacterController>().FromComponentOnRoot().AsSingle();
             Container.Bind<GizmosDrawer>().FromComponentOnRoot().AsSingle();
+            Container.Bind<PLayerDamageHandler>().AsSingle();
+            Container.Bind<PlayerHealHandler>().AsSingle();
+            Container.Bind<EntityProvider>().FromComponentOnRoot().AsSingle();
         }
     }
 }
