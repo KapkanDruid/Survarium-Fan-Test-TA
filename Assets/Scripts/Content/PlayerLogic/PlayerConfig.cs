@@ -5,16 +5,25 @@ namespace Assets.Scripts.Content.PlayerLogic
     [CreateAssetMenu(menuName = "Survarium/Configs/" + nameof(PlayerConfig))]
     public class PlayerConfig : ScriptableObject
     {
+        [Header("Movement Settings")]
         [SerializeField] private float _moveSpeedOnGround;
         [SerializeField] private float _moveSpeedOnFall;
         [SerializeField] private float _runSpeed;
+
+        [Header("Crouch Settings"), Space(3)]
         [SerializeField] private float _crouchHeight;
         [SerializeField] private float _crouchSpeed;
+
+        [Header("Jump Settings"), Space(3)]
         [SerializeField] private float _jumpTime;
         [SerializeField] private float _jumpHeight;
+
+        [Header("Slide Settings"), Space(3)]
         [SerializeField] private float _slideAngle;
         [SerializeField] private float _slideSpeed;
         [SerializeField] private float _slideSpeedMultiplierByAngle;
+
+        [Header("FOV Settings"), Space(3)]
         [SerializeField, Range(0, 100)] private float _FOVIncreasePercent;
         [SerializeField] private float _FOVIncreaseDuration;
 
